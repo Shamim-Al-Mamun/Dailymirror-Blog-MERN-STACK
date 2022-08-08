@@ -1,0 +1,436 @@
+:root {
+  --primary-color: #9b4b64;
+  --primary-color-light: #9b4b6480;
+  --primary-color-deep: #6e3547;
+  --secondary-color: rgb(245, 225, 180);
+  --secondary-color-light: #fcf8e8;
+  --nav-backGround-color: rgb(128, 128, 128, 0.5);
+  --nav-link-color: rgb(250, 200, 55);
+  --text-color-deep: black;
+  --text-color-light: grey;
+}
+body {
+  font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+input {
+  height: 30px;
+  padding-left: 15px;
+  font-size: 12px !important;
+  border: 1px solid var(--primary-color-light);
+  border-radius: 3px;
+  outline: none;
+}
+textarea {
+  padding-left: 15px !important;
+  padding-top: 10px;
+  height: 80px;
+  border: 1px solid var(--primary-color-light);
+  border-radius: 3px;
+  outline: none;
+  font-size: 12px !important;
+}
+input[type="radio"]:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  left: -1px;
+  position: relative;
+  background-color: #d1d3d1;
+  content: "";
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid var(--secondary-color-light);
+  cursor: pointer;
+}
+input[type="radio"]:checked:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  left: -1px;
+  position: relative;
+  background-color: var(--primary-color);
+  content: "";
+  display: inline-block;
+  visibility: visible;
+  transition: 0.3s ease;
+}
+.invalidInput {
+  border: 1px solid red !important;
+}
+.flex {
+  display: flex;
+  width: 50%;
+}
+.cardMaxMinWidth {
+  max-width: 500px;
+  min-width: 300px !important;
+}
+.primary-text-color {
+  color: var(--primary-color);
+}
+.loader {
+  background: -webkit-linear-gradient(
+    rgb(255, 200, 100, 0.3),
+    rgb(255, 50, 200, 0.3)
+  );
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+.loader > div > span {
+  margin-top: 20vh;
+}
+.loader > div > span::after > span {
+  color: var(--primary-color) !important;
+  background-color: var(--primary-color) !important;
+}
+.smallFont {
+  font-size: 10px;
+}
+.pointer {
+  cursor: pointer;
+  user-select: none;
+}
+.iconSize {
+  font-size: 12px;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+}
+table,
+td,
+th,
+tr {
+  border: none !important;
+  font-size: small;
+}
+tbody {
+  border: none !important;
+}
+button:focus,
+.form-control {
+  box-shadow: none !important;
+}
+::placeholder {
+  font-size: x-small !important;
+}
+
+.primary-btn {
+  background-color: var(--primary-color) !important;
+  border: none !important;
+  outline: none !important;
+  font-size: 10px !important;
+  transition: 0.5s ease !important;
+  user-select: none !important;
+}
+.primary-btn:focus {
+  background-color: var(--primary-color-deep) !important;
+}
+.secondary-btn {
+  background-color: white !important;
+  color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  outline: none !important;
+  font-size: 8px !important;
+  transition: 0.5s ease !important;
+}
+.secondary-btn:hover {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  border-color: white !important;
+}
+.carousel-btn {
+  width: 50%;
+  padding: 5px;
+  font-size: small;
+  margin-top: 20px;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  background-color: var(--primary-color);
+}
+.carousel-btn:focus {
+  border: 1px solid var(--secondary-color);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  transition: 0.5s ease;
+}
+.hover:hover {
+  color: var(--primary-color);
+  transition: 0.2s ease;
+}
+.carousel-indicators button {
+  color: blanchedalmond !important;
+  width: 5px !important;
+  height: 2px !important;
+}
+.customCard {
+  background-color: var(--secondary-color-light) !important;
+  border-color: var(--primary-color-light) !important;
+  color: var(--primary-color);
+}
+.message {
+  height: 20px;
+}
+.line {
+  width: 90%;
+  margin: auto;
+  border-bottom: 1px solid var(--primary-color-light);
+  border-bottom: 1px solid rgb(155, 155, 155);
+  margin-bottom: 10px;
+}
+.width45 {
+  width: 45% !important;
+}
+.heartFill {
+  color: orangered;
+}
+.opacityLight {
+  opacity: 0.5;
+  transition: 0.3s ease;
+}
+.main-container {
+  display: flex;
+}
+.title {
+  font-size: 3rem;
+  display: grid;
+  place-items: center;
+}
+.nav {
+  z-index: 2 !important;
+}
+.blogCarousel {
+  position: absolute;
+  width: 100%;
+  top: 0 !important;
+}
+.carousel-control-prev,
+.carousel-control-next {
+  display: none !important;
+}
+.carouselImg {
+  height: 40vh;
+  margin: auto;
+  z-index: 2 !important;
+}
+.blog {
+  width: 100%;
+  margin: auto !important;
+  margin-top: 41vh !important;
+}
+.seeMore-btn,
+.edit-btn,
+.link-btn {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 9px;
+  color: var(--primary-color);
+  text-decoration: underline;
+  transition: 0.5s ease;
+}
+.seeMore-btn:hover,
+.edit-btn:hover,
+.link-btn:hover {
+  color: var(--primary-color-deep) !important;
+}
+.blue {
+  color: #4d4dff;
+}
+.green {
+  color: #008000;
+}
+.purple {
+  color: #9b4b64;
+}
+.grey {
+  color: #4d4d4d;
+}
+.red {
+  color: #ff6347;
+}
+.minWidth {
+  min-width: 250px !important;
+}
+.margin2rem {
+  margin-left: 2rem;
+}
+.instapic {
+  width: 12.5%;
+  max-height: 250px;
+}
+.aboutPic,
+.contactPic {
+  width: 100%;
+  height: 500px;
+}
+.catDropdown {
+  background-color: transparent !important;
+  border-color: var(--primary-color-light) !important;
+  color: black !important;
+  font-size: x-small !important;
+}
+.catDropdownItem {
+  color: black !important;
+  font-size: smaller !important;
+}
+.catDropdownItem:focus {
+  background-color: gray !important;
+  color: white !important;
+}
+.AnalyticsCard {
+  width: 70%;
+  margin-left: 5px;
+  height: 60vh;
+  padding: 25px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+.relative {
+  position: relative;
+}
+.bar {
+  position: absolute;
+  bottom: 0;
+  width: 20px;
+  background-color: red;
+  border-radius: 2px;
+}
+.width50px {
+  width: 40px;
+  padding: 2px;
+}
+.postNum {
+  position: absolute;
+  width: 40px;
+  text-align: center;
+  font-size: small;
+  margin-bottom: 0;
+}
+.subsArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--primary-color-light);
+  border-radius: 3px;
+  width: 50%;
+  margin: auto;
+}
+.height {
+  height: 30px;
+}
+.spinner {
+  height: 10px !important;
+  width: 10px !important;
+}
+/* -----------------Responsive Style Starts----------------- */
+@media screen and (min-width: 760px) {
+  .carouselImg {
+    height: 70vh;
+    margin: auto;
+    z-index: 2 !important;
+  }
+  .blog {
+    margin-top: 71vh !important;
+    width: 100%;
+  }
+  .carousel-btn {
+    width: 25%;
+  }
+  .catagoryCard {
+    width: 90%;
+  }
+  .latestPostTitle {
+    font-size: 8px;
+  }
+}
+@media screen and (min-width: 1020px) {
+  .carouselImg {
+    height: 80vh;
+    margin: auto;
+    z-index: 2 !important;
+  }
+  .blog {
+    margin-top: 81vh !important;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1420px) {
+  .carouselImg {
+    height: 90vh;
+    margin: auto;
+    z-index: 2 !important;
+  }
+  .blog {
+    margin-top: 91vh !important;
+    width: 100%;
+  }
+  .top_section {
+    padding: 15px 10px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .profile {
+    display: none;
+  }
+}
+@media only screen and (max-width: 780px) {
+  .loginCard,
+  .forgotCard {
+    width: 90% !important;
+  }
+  .login {
+    margin-top: 7rem;
+    min-height: 60vh !important;
+  }
+  .aboutPic,
+  .contactPic {
+    height: 400px !important;
+  }
+  .footerTitle {
+    font-size: 12px !important;
+    font-weight: 600;
+  }
+  .footerText {
+    font-size: 10px !important;
+  }
+  .subsEmailInput {
+    width: 40% !important;
+  }
+  .managetitle {
+    font-size: 12px;
+    font-weight: 500 !important;
+  }
+  .manageText {
+    font-size: 10px;
+  }
+  .dashboardButton {
+    width: 75% !important;
+  }
+  .dashboard-btn {
+    width: 90% !important;
+  }
+  .flex {
+    display: block;
+    width: 75%;
+  }
+  .AnalyticsCard {
+    width: 100% !important;
+    height: 20vh !important;
+  }
+}
+/* -----------------Responsive Style Ends----------------- */

@@ -1,0 +1,470 @@
+:root {
+  --primary-color: rgb(155, 75, 100);
+  --primary-color-light: rgb(155, 75, 100, 0.5);
+  --primary-color-deep: rgb(110, 53, 71);
+  --secondary-color: rgb(245, 225, 180);
+  --nav-backGround-color: rgb(128, 128, 128, 0.5);
+  --nav-link-color: rgb(250, 200, 55);
+  --text-color-deep: black;
+  --text-color-light: grey;
+}
+/* -----------------NavBar Style Starts----------------- */
+.logo {
+  height: 30px;
+  width: 30px;
+  user-select: none;
+}
+.logoText {
+  font-size: 18px !important;
+  background: -webkit-linear-gradient(rgb(255, 200, 100), rgb(255, 50, 200));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+}
+.toggleBar {
+  width: 40px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.navLinks,
+.navLogin {
+  font-size: 12px;
+  padding: 15px !important;
+  color: var(--nav-link-color) !important;
+  font-weight: 400;
+  user-select: none !important;
+}
+.navLogin {
+  border: 1px solid rgb(250, 200, 55, 0.8) !important;
+  border-radius: 5px;
+}
+.activeLogin {
+  color: var(--primary-color) !important;
+  border: 1px solid var(--primary-color) !important;
+}
+.activeLink {
+  color: var(--primary-color) !important;
+}
+.navScrollColor {
+  background-color: var(--nav-backGround-color);
+  transition: 1s ease;
+}
+.nav-toggler {
+  background-color: transparent;
+  height: 34px;
+  width: 44px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  margin-right: 20px;
+}
+.nav-toggler:focus {
+  outline: none;
+}
+.nav-toggler span {
+  height: 2px;
+  width: 20px;
+  background-color: white;
+  display: block;
+  margin: auto;
+  position: relative;
+  transition: all 0.3s ease;
+}
+.nav-toggler.activeToggle span {
+  background-color: transparent;
+}
+.nav-toggler span::before,
+.nav-toggler span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+.nav-toggler span::before {
+  transform: translateY(-6px);
+}
+.nav-toggler.activeToggle span::before {
+  transform: rotate(45deg);
+}
+.nav-toggler span::after {
+  transform: translateY(6px);
+}
+.nav-toggler.activeToggle span::after {
+  transform: rotate(135deg);
+}
+.active,
+.active > div {
+  color: var(--primary-color) !important;
+}
+.active > span {
+  color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+/* -----------------NavBar Style Ends----------------- */
+
+/* -----------------Sidebar Style Starts----------------- */
+.sidebar {
+  color: #fff;
+  border-radius: 5px;
+  height: auto !important;
+  z-index: 2 !important;
+  position: fixed;
+  top: 65px;
+  padding: 10px 0 10px 0;
+}
+.top_section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sidebarImg {
+  height: 20px;
+  width: 20px;
+  border-radius: 20px;
+  margin: 5px;
+}
+.logo {
+  font-size: 18px;
+  line-height: 0;
+}
+.bars {
+  font-size: larger;
+}
+.hide {
+  display: none;
+}
+.search {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  height: 30px;
+  padding: 10px;
+}
+.search input {
+  border: none;
+  margin-left: 10px;
+  border-radius: 5px;
+  background: rgb(238, 238, 238);
+  color: white;
+}
+.routes {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.icon {
+  font-size: 12px;
+  color: var(--nav-link-color);
+  cursor: pointer !important;
+}
+.link {
+  display: flex;
+  text-decoration: none;
+  color: white;
+  gap: 10px;
+  padding: 5px 10px;
+  border-right: 4px solid transparent;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+.link_text {
+  color: aqua;
+  white-space: nowrap;
+  font-size: 12px;
+  cursor: pointer;
+}
+.link:focus {
+  color: tomato !important;
+}
+.menu {
+  display: flex;
+  color: white;
+  padding: 5px 10px;
+  border-right: 4px solid transparent;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  justify-content: space-between;
+}
+.menu_item {
+  display: flex;
+  /* background-color: chartreuse; */
+  gap: 10px;
+}
+.menu_container {
+  display: flex;
+  flex-direction: column;
+}
+.menu_container .link {
+  padding-left: 20px;
+  border-bottom: #fff 0.5px solid;
+}
+/* -----------------Sidebar Style Ends----------------- */
+
+/* -------------- Post Style Starts -------------- */
+.loading {
+  color: var(--primary-color) !important;
+  background-color: var(--primary-color) !important;
+}
+.date {
+  font-size: 8px;
+  margin: 2px;
+  color: gray;
+}
+.catagory {
+  color: var(--primary-color);
+  font-size: 12px;
+}
+.favNcom {
+  font-size: 10px;
+  margin-right: 5px;
+}
+.description {
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+.textFade {
+  background: -webkit-linear-gradient(black, white);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.commentBody {
+  margin: 0 !important;
+  /* padding: 0.2rem 0.2rem 0.2rem 1rem; */
+  padding: 5px;
+  padding-left: 12px;
+  font-size: 9px !important;
+  border-color: black !important;
+  border-radius: 2px;
+  color: var(--text-color-deep);
+}
+.CommentInput {
+  width: 100%;
+  background-color: rgb(245, 222, 179, 0.3);
+  padding: 12px;
+  height: 12px !important;
+  font-size: 10px !important;
+  border: none;
+  border-radius: 5px;
+}
+.post-btn {
+  font-size: 8px !important;
+  padding: 4px !important;
+  width: 40%;
+}
+/* -------------- Post Style Ends -------------- */
+
+/* -------------- profile Style Starts -------------- */
+.propic {
+  width: 13vh;
+  height: 13vh;
+  border-radius: 13vh;
+  z-index: 1 !important;
+  position: relative !important;
+  border-color: transparent !important;
+  outline: none !important;
+}
+.profile {
+  position: relative;
+  width: 100% !important;
+  background-color: var(--secondary-color);
+}
+.profileBio {
+  font-size: 11.5px;
+  color: rgb(75, 75, 75);
+}
+.profileLinks {
+  font-size: 12px;
+}
+.profileLink {
+  font-size: 10px;
+}
+
+/* -------------- Catagories Style Starts -------------- */
+.catagoryCard {
+  background-color: transparent !important;
+  border: none !important;
+  width: 80%;
+  margin: auto;
+  height: 150px;
+  margin-bottom: 1rem;
+}
+.catImg {
+  height: 150px !important;
+  margin-bottom: 1rem;
+}
+.cat-btn {
+  width: 50%;
+  position: absolute;
+  z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 45%;
+  color: white !important;
+  text-align: center;
+  opacity: 0.9;
+}
+.cat-btn:hover {
+  color: var(--primary-color) !important;
+  background-color: var(--secondary-color) !important;
+}
+/* -------------- Catagories Style Ends -------------- */
+
+/* -------------- Latest post Style Starts -------------- */
+.latestPosts {
+  margin-top: 50rem;
+}
+.latestPic {
+  width: 100%;
+  height: 140px;
+  text-align: start;
+}
+.latestPostDetails {
+  height: 140px;
+  margin-left: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.latestPostTitle {
+  padding: 2px;
+  font-size: 10px;
+  font-weight: 600;
+}
+.popularPostTitle {
+  padding: 2px;
+  font-size: 8px;
+  font-weight: 600;
+}
+.latestPostDate {
+  font-size: 10px;
+}
+/* -------------- Latest post Style Ends -------------- */
+
+/* -------------- Dashboard Style Starts -------------- */
+.dashboard,
+.addpost,
+.editProfile,
+.subscription,
+.messages,
+.popuplar,
+.editpost,
+.analytics,
+.singlePost,
+.user,
+.passAndsecurity,
+.changeTheme,
+.customContainer {
+  margin-top: 5rem;
+  min-height: 90vh;
+}
+.dashboardButton {
+  width: 25%;
+  height: 25px;
+  font-size: 12px !important;
+  padding: 0 !important;
+}
+.dashboard-btn {
+  width: 90% !important;
+  font-size: 8px !important;
+}
+.editProfileTextArea {
+  height: 100px;
+  padding: 10px;
+}
+.popularPostCard {
+  opacity: 0.8;
+  transition: 0.3s ease;
+}
+.popularPostCard:hover {
+  opacity: 1;
+}
+.popoularPostDetails {
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.popularPostImg {
+  border-radius: none !important;
+}
+.maxwidth {
+  max-width: 300px;
+}
+.radio-btn {
+  height: 15px !important;
+}
+/* -------------- Dashboard Style Ends -------------- */
+
+/* -------------- Add/Edit post Style Starts -------------- */
+.addPostINPUT {
+  width: 100%;
+  height: 30px;
+  padding: 0 !important;
+  padding-left: 0.5rem !important;
+  outline: none;
+  font-size: x-small !important;
+}
+.addPostTEXTAREA {
+  padding: 5px !important;
+  padding-left: 0.5rem !important;
+  font-size: x-small !important;
+  height: 100px;
+}
+.editPostTEXTAREA {
+  padding: 5px !important;
+  padding-left: 0.5rem !important;
+  font-size: x-small !important;
+  height: 150px;
+}
+/* -------------- Add/Edit post Style Ends -------------- */
+
+/* -------------- Login Style Starts -------------- */
+.login {
+  margin-top: 7rem;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+}
+.loginCard,
+.themeCard,
+.forgotCard {
+  width: 50%;
+  height: 250px;
+  max-width: 300px;
+  min-width: 250px !important;
+  padding: 20px 30px 30px 40px;
+}
+/* -------------- Login Style Ends -------------- */
+
+/* -------------- Footer Style Starts -------------- */
+.footerTitle {
+  font-size: 20px;
+  font-weight: 600;
+}
+.footerText {
+  font-size: 12px;
+}
+.subsEmailInput {
+  width: 30%;
+  outline: none;
+  height: 28px;
+  font-size: 10px;
+  border: none;
+}
+.footer-btn {
+  border-start-end-radius: 5px !important;
+  border-end-end-radius: 5px !important;
+  height: 28px;
+  width: 60px;
+  color: white;
+  font-size: 10px !important;
+}
+.copyRight {
+  font-size: 8px;
+}
+/* -------------- Footer Style Ends -------------- */
