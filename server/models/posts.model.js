@@ -12,7 +12,7 @@ const postSchema = new Schema({
   favouritesCount: { type: Number, default: 0 },
   commentsCount: { type: Number, default: 0 },
 
-  status: { type: Boolean, default: true },
+  status: { type: Boolean, default: false },
   timestamp: { type: Number, required: true },
 });
 

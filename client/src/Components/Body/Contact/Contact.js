@@ -62,9 +62,10 @@ function Contact() {
         initial={{ opacity: 0, scale: 1, y: "3px" }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.3 }}
+        className="contact"
       >
-        <Container className="py-5">
-          <Row xs={1} md={2} lg={2} className="py-2">
+        <Container className="py-2">
+          <Row xs={1} md={2} lg={2} className="py-1">
             <Col lg={6} md={6}>
               <div className="my-3">
                 <h4 className="my-4 text-center primary-text-color">

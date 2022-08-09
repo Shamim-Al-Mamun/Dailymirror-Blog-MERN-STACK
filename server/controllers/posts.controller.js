@@ -2,7 +2,6 @@ const Post = require("../models/posts.model");
 
 exports.postPost = async (req, res) => {
   try {
-    console.log(req.body);
     const post = await new Post(req.body).save();
     const posts = await Post.find();
     res.status(200).json({

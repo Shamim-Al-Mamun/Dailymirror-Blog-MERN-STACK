@@ -11,7 +11,7 @@ function About() {
   const { profile } = useContext(UserContext);
 
   return (
-    <>
+    <div className="about">
       {profile &&
         profile.length > 0 &&
         profile.map((profile) => {
@@ -22,8 +22,8 @@ function About() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <Container className="py-5">
-                  <Row xs={1} md={2} lg={2} className=" py-3 rounded-3">
+                <Container className="py-2">
+                  <Row xs={1} md={2} lg={2} className=" py-1 rounded-3">
                     <Col lg={6} md={6}>
                       <img
                         initial={{ opacity: 0, scale: 1, y: "5px" }}
@@ -67,7 +67,7 @@ function About() {
             </AnimatePresence>
           );
         })}
-    </>
+    </div>
   );
 }
 

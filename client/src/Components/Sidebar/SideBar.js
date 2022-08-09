@@ -261,7 +261,7 @@ const SideBar = ({ children }) => {
                       },
                     }}
                     src={`/uploads/${user.userImage}`}
-                    alt="user pic"
+                    alt=" "
                     className="sidebarImg"
                   />
                 )}

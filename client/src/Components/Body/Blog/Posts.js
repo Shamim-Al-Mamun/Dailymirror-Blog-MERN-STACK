@@ -50,7 +50,6 @@ function Posts() {
         localStorage.setItem("favourites", JSON.stringify(updatedFavourites));
       } else {
         const updatedFavourites = [...favourites, _id];
-        console.log(updatedFavourites);
         const updatedPost = {
           ...post,
           favouritesCount: post.favouritesCount + 1,
@@ -90,7 +89,7 @@ function Posts() {
             <div className="text-start mb-3" key={index}>
               <img
                 src={`/uploads/${post.postImage}`}
-                alt="post1pic"
+                alt="post pic"
                 className="w-100 rounded-3 pointer"
               />
               <div className="d-flex justify-content-between user-select-none">

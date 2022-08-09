@@ -383,11 +383,6 @@ button:focus,
     padding: 15px 10px;
   }
 }
-@media screen and (max-width: 1000px) {
-  .profile {
-    display: none;
-  }
-}
 @media only screen and (max-width: 780px) {
   .loginCard,
   .forgotCard {
@@ -431,6 +426,30 @@ button:focus,
   .AnalyticsCard {
     width: 100% !important;
     height: 20vh !important;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .profile,
+  .FavouriteList,
+  .catagories,
+  .latestPost {
+    display: none;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .profile,
+  .FavouriteList,
+  .catagories,
+  .latestPost {
+    display: none;
+  }
+}
+@media screen and (max-width: 750px) {
+  .profile,
+  .FavouriteList,
+  .catagories,
+  .latestPost {
+    display: block;
   }
 }
 /* -----------------Responsive Style Ends----------------- */

@@ -15,7 +15,7 @@ function LatestPost() {
   }
 
   return (
-    <div>
+    <div className="latestPost">
       <h6 className="mb-3 text-center">Latest Posts</h6>
       {FilteredPost &&
         FilteredPost.length > 0 &&

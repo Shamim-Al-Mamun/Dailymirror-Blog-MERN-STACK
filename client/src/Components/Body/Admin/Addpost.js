@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
@@ -12,7 +12,7 @@ import UserContext from "../../../Context/UserContext";
 function Addpost() {
   const navigate = useNavigate();
 
-  const { setPosts, user } = useContext(UserContext);
+  const { setPosts, user, setPendingPosts } = useContext(UserContext);
 
   const [newPost, setNewPost] = useState({
     catagory: "Sports",
@@ -21,8 +21,10 @@ function Addpost() {
     postImage: "",
     postedBy: user.username,
     timestamp: "",
+    status: false,
   });
   const [file, setFile] = useState("");
+  const [error, setError] = useState("");
 
   //API URL
   const baseURL = process.env.React_APP_API_URL;
@@ -33,36 +35,60 @@ function Addpost() {
     const timestamp = new Date().getTime();
     let fd = new FormData();
     fd.append("pictures", file);
-    axios
-      .post(`${baseURL}/posts`, {
-        ...newPost,
-        timestamp: timestamp,
-      })
-      .then((res) => {
-        console.log(res.data);
-        const data = res.data.posts;
-        setPosts(data);
-      })
-      .catch((err) => {
-        console.log(err);
+    if (file) {
+      axios
+        .post(`${baseURL}/posts`, {
+          ...newPost,
+          timestamp: timestamp,
+        })
+        .then((res) => {
+          console.log(res.data);
+          const posts = res.data.posts;
+          console.log(posts);
+          const Approvedpost = posts.filter((post) => post.status === true);
+          const Pendingpost = posts.filter((post) => post.status === false);
+          console.log(Approvedpost);
+          console.log(Pendingpost);
+          setPosts(Approvedpost);
+          setPendingPosts(Pendingpost);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      axios
+        .post(`${baseURL}/posts`, fd)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      setNewPost({
+        catagory: "",
+        title: "",
+        description: "",
+        postImage: "",
+        timestamp: "",
       });
-    axios
-      .post(`${baseURL}/posts`, fd)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    setNewPost({
-      catagory: "",
-      title: "",
-      description: "",
-      postImage: "",
-      timestamp: "",
-    });
-    navigate("/dashboard");
+      setError("");
+      navigate("/dashboard");
+    } else {
+      setError("Please upload a valid pic!");
+    }
   };
+
+  useEffect(() => {
+    if (user) {
+      const { role } = user;
+      if (role) {
+        if (role === "Admin") {
+          setNewPost({ ...newPost, status: true });
+        }
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Container className="addpost">
       <div className="w-25 ms-auto text-end">
@@ -75,6 +101,9 @@ function Addpost() {
       </div>
       <Card className="p-4 mt-3 bg-light">
         <form onSubmit={handleNewPost} encType="multipart/form-data">
+          <div className="message">
+            {error && <p className="text-center text-danger small">{error}</p>}
+          </div>
           <div className="d-flex align-items-center mb-2">
             <div className="w-25 text-center">
               <label className="managetitle">Title:</label>

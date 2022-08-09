@@ -8,8 +8,16 @@ import axios from "axios";
 import UserContext from "../../../Context/UserContext";
 
 function Dashboard() {
-  const { posts, setPosts, profile, contacts, subscriptions, user } =
-    useContext(UserContext);
+  const {
+    posts,
+    setPosts,
+    pendingPosts,
+    setPendingPosts,
+    profile,
+    contacts,
+    subscriptions,
+    user,
+  } = useContext(UserContext);
 
   const [userRole, setUserRole] = useState("");
 
@@ -29,11 +37,33 @@ function Dashboard() {
     axios
       .delete(`${baseURL}/posts/${id}`)
       .then((res) => {
-        const data = res.data.posts;
-        setPosts(data);
+        const posts = res.data.posts;
+        const Approvedpost = posts.filter((post) => post.status === true);
+        const Pendingpost = posts.filter((post) => post.status === false);
+        setPosts(Approvedpost);
+        setPendingPosts(Pendingpost);
       })
       .catch((err) => console.log(err));
   };
+
+  const handleApprovePost = (post) => {
+    const { _id } = post;
+    axios
+      .put(`${baseURL}/posts/${_id}`, { ...post, status: true })
+      .then((res) => {
+        const data = res.data.posts;
+        setPosts(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log(pendingPosts);
+    const updatedPendingPost = pendingPosts.filter((post) => post._id !== _id);
+    console.log(updatedPendingPost);
+
+    setPendingPosts(updatedPendingPost);
+  };
+  console.log(userRole);
   return (
     <Container className="dashboard">
       {(userRole === "Admin" || userRole === "Moderator") && (
@@ -117,6 +147,151 @@ function Dashboard() {
                         </div>
                         <div className="w-50">
                           {" "}
+                          <Link
+                            className="w-50 m-auto"
+                            to={`/editpost/${post._id}`}
+                          >
+                            <Button
+                              variant="danger"
+                              className="dashboardButton dashboard-btn"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                handleDeletePost(post._id);
+                              }}
+                            >
+                              Delete
+                            </Button>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                    <p className="m-0 small">
+                      <span className="blockquote-footer">
+                        <span className="small">posted by</span>{" "}
+                        <span className="fst-italic small">
+                          {post.postedBy.charAt(0).toUpperCase() +
+                            post.postedBy.toString().slice(1)}
+                        </span>
+                        <p className="small ms-2 m-0">
+                          <span className="small">
+                            <span className="small">
+                              {new Date(post.timestamp).toLocaleString("en-US")}
+                            </span>
+                          </span>
+                        </p>
+                      </span>
+                    </p>
+                  </li>
+                </ul>
+                {index !== posts.length - 1 && <div className="line"></div>}
+              </div>
+            );
+          })}
+        {userRole === "Admin" &&
+          pendingPosts &&
+          pendingPosts.length > 0 &&
+          pendingPosts.map((post, index) => {
+            return (
+              <div key={index}>
+                <ul key={index}>
+                  <li>
+                    <div
+                      className="d-flex small text-center mb-1"
+                      key={post._id}
+                    >
+                      <p className="m-0 small  w-25 manageText">{post.title}</p>
+                      <p className="m-0 small w-25 text-center manageText">
+                        {post.description.slice(0, 30) + "...."}
+                      </p>
+                      <p className=" m-0 small w-25 text-center manageText">
+                        {post.catagory}
+                      </p>
+                      <div className="w-25 d-flex justify-content-around">
+                        <div className="w-50">
+                          <Button
+                            variant="primary"
+                            className="dashboardButton dashboard-btn"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handleApprovePost(post);
+                            }}
+                          >
+                            Approve
+                          </Button>
+                        </div>
+                        <div className="w-50">
+                          <Link
+                            className="w-50 m-auto"
+                            to={`/editpost/${post._id}`}
+                          >
+                            <Button
+                              variant="danger"
+                              className="dashboardButton dashboard-btn"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                handleDeletePost(post._id);
+                              }}
+                            >
+                              Delete
+                            </Button>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                    <p className="m-0 small">
+                      <span className="blockquote-footer">
+                        <span className="small">posted by</span>{" "}
+                        <span className="fst-italic small">
+                          {post.postedBy.charAt(0).toUpperCase() +
+                            post.postedBy.toString().slice(1)}
+                        </span>
+                        <p className="small ms-2 m-0">
+                          <span className="small">
+                            <span className="small">
+                              {new Date(post.timestamp).toLocaleString("en-US")}
+                            </span>
+                          </span>
+                        </p>
+                      </span>
+                    </p>
+                  </li>
+                </ul>
+                {index !== posts.length - 1 && <div className="line"></div>}
+              </div>
+            );
+          })}
+        {userRole !== "Admin" &&
+          pendingPosts &&
+          pendingPosts.length > 0 &&
+          pendingPosts.map((post, index) => {
+            return (
+              <div key={index}>
+                <ul key={index}>
+                  <li>
+                    <div
+                      className="d-flex small text-center mb-1"
+                      key={post._id}
+                    >
+                      <p className="m-0 small  w-25 manageText">{post.title}</p>
+                      <p className="m-0 small w-25 text-center manageText">
+                        {post.description.slice(0, 30) + "...."}
+                      </p>
+                      <p className=" m-0 small w-25 text-center manageText">
+                        {post.catagory}
+                      </p>
+                      <div className="w-25 d-flex justify-content-around">
+                        <div className="w-50">
+                          <Button
+                            variant="warning"
+                            className="dashboardButton dashboard-btn"
+                            onClick={(e) => {
+                              e.preventDefault();
+                            }}
+                          >
+                            Pending
+                          </Button>
+                        </div>
+                        <div className="w-50">
                           <Link
                             className="w-50 m-auto"
                             to={`/editpost/${post._id}`}

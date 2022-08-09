@@ -37,6 +37,7 @@ import PrivateOutlet from "./Components/PrivateOutlet";
 //Context
 import UserContext from "./Context/UserContext";
 import "./App.css";
+import Favourites from "./Components/Body/Blog/Favourites";
 
 function App() {
   const [auth, setAuth] = useState(false);
@@ -45,6 +46,7 @@ function App() {
   const [users, setUsers] = useState([]);
   const [profile, setProfile] = useState([]);
   const [posts, setPosts] = useState([]);
+  const [pendingPosts, setPendingPosts] = useState([]);
   const [contacts, setContacts] = useState([]);
   const [subscriptions, setSubscriptions] = useState([]);
 
@@ -102,7 +104,10 @@ function App() {
       .get(`${baseURL}/posts`)
       .then((res) => {
         const posts = res.data.Posts;
-        setPosts(posts);
+        const Approvedpost = posts.filter((post) => post.status === true);
+        const Pendingpost = posts.filter((post) => post.status === false);
+        setPosts(Approvedpost);
+        setPendingPosts(Pendingpost);
         setLoading(false);
       })
       .catch((err) => console.log(err));
@@ -153,6 +158,7 @@ function App() {
     auth,
     users,
     posts,
+    pendingPosts,
     profile,
     contacts,
     subscriptions,
@@ -163,6 +169,7 @@ function App() {
     setPosts,
     setUsers,
     setSubscriptions,
+    setPendingPosts,
     setContacts,
     setUser,
     setAuth,
@@ -209,6 +216,7 @@ function App() {
                     path="/resetpassword/:Random"
                     element={<ResetPass />}
                   />
+                  <Route path="/favourites" element={<Favourites />} />
                   <Route path="/*" element={<PrivateOutlet auth={auth} />}>
                     <Route path="dashboard" element={<Dashboard />} />
                     <Route path="subscription" element={<Subscription />} />

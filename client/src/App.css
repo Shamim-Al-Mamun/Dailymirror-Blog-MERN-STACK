@@ -311,6 +311,9 @@
   color: var(--primary-color) !important;
   background-color: var(--secondary-color) !important;
 }
+.FavouriteList {
+  margin-top: 28rem;
+}
 /* -------------- Catagories Style Ends -------------- */
 
 /* -------------- Latest post Style Starts -------------- */
@@ -355,9 +358,12 @@
 .analytics,
 .singlePost,
 .user,
+.about,
+.contact,
 .passAndsecurity,
 .changeTheme,
-.customContainer {
+.customContainer,
+.favourites {
   margin-top: 5rem;
   min-height: 90vh;
 }
@@ -397,6 +403,11 @@
 }
 .radio-btn {
   height: 15px !important;
+}
+.favlen {
+  font-size: 10px;
+  margin-left: 3px;
+  font-weight: bold;
 }
 /* -------------- Dashboard Style Ends -------------- */
 

@@ -35,7 +35,6 @@ function Editpost() {
 
     let fd = new FormData();
     fd.append("pictures", file);
-
     axios
       .put(`${baseURL}/posts/${postID}`, updatedPost)
       .then((res) => {
