@@ -5,6 +5,7 @@ Can create and delete users
 Can update the profile
 Can create, edit and delete posts. And approve posts posted by moderator or general
 Can monitor popular posts and track number of posts per month
+
 Email: mamun@gmail.com
 
 Pass: Mamun12345
@@ -15,6 +16,7 @@ Rules of Moderator:
 Can update the profile
 Can create, edit and delete posts. Post will be published if admin approves
 Can monitor popular posts and track number of posts per month
+
 Email: omit@gmail.com
 
 Pass: Omit12345
@@ -24,6 +26,7 @@ Pass: Omit12345
 Rules of General:
 Can create, edit and delete post. Post will be published if admin approves
 Can monitor popular posts and track number of posts per month
+
 Email: hasan@gmail.com
 
 Pass: Hasan12345
